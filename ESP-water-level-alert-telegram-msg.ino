@@ -44,12 +44,7 @@ void setup()
      {
      rst_info *rinfo = ESP.getResetInfoPtr();
      Serial.println(String("\nResetInfo.reason = ") + (*rinfo).reason + ": " + ESP.getResetReason()); 
-     //ESP.wdtEnable(20000); 
-     //Serial.begin(115200); // für ESP-01 nur 9600
      Serial.begin(115200);
-     //while(!Serial) {} // Wait
-     
-     //Serial.println(""); Serial.print("Reason for startup :");Serial.println(ESP.getResetReason());
      wifi_station_set_hostname(hostname);
      WiFi.begin(SSID, password);
      Serial.print("\n  Connecting to " + String(SSID) + " ");
@@ -65,8 +60,6 @@ void setup()
      if ( _try >= NB_TRYWIFI ) 
         {
         Serial.println("Keine Verbindung mit dem WLAN Netzwerk möglich, gehe in den Tiefschlaf!");
-        delay(500);
-        //WiFi.forceSleepBegin(); wdt_reset(); 
         delay(60000);
         }
      Serial.println();       
